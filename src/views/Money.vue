@@ -1,6 +1,8 @@
 <template>
     <div>
         Money.vue
+        <hr>
+        <Nav></Nav>
     </div>
 </template>
 

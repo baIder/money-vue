@@ -1,6 +1,8 @@
 <template>
     <div>
         Labels.vue
+        <hr>
+        <Nav></Nav>
     </div>
 </template>
 
