@@ -18,7 +18,7 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['Money', 'Labels', 'Statistics', 'Nav'],
+        ignores: ['Money', 'Labels', 'Statistics', 'Nav', 'Layout'],
       },
     ],
   },
