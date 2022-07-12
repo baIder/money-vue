@@ -1,26 +1,26 @@
 <template>
-    <div class="nav">
-        <router-link to="/money">
-            <svg class="iconpark-icon">
+    <nav>
+        <router-link to="/money" class="item">
+            <svg class="icon">
                 <use href="#consume"></use>
             </svg>
             记账
         </router-link>
-        |
-        <router-link to="/labels">
-            <svg class="iconpark-icon">
+
+        <router-link to="/labels" class="item">
+            <svg class="icon">
                 <use href="#bookmark-one"></use>
             </svg>
             标签
         </router-link>
-        |
-        <router-link to="/statistics">
-            <svg class="iconpark-icon">
+
+        <router-link to="/statistics" class="item">
+            <svg class="icon">
                 <use href="#analysis"></use>
             </svg>
             统计
         </router-link>
-    </div>
+    </nav>
 </template>
 
 <script lang="ts">
@@ -31,7 +31,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav {
-    border: 1px solid red;
+nav {
+    display: flex;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    flex-direction: row;
+    padding: 0;
+    font-size: 12px;
+
+    >.item {
+        width: 33.33333%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2px 0;
+
+        .icon {
+            width: 32px;
+            height: 32px;
+        }
+    }
 }
 </style>
