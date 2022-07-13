@@ -15,12 +15,13 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     //添加组件名忽略规则
-    'vue/multi-word-component-names': [
-      'error',
-      {
-        ignores: ['Money', 'Labels', 'Statistics', 'Nav', 'Layout'],
-      },
-    ],
+    'vue/multi-word-component-names': 'off',
+    // [
+    //   'error',
+    //   {
+    //     ignores: ['Money', 'Labels', 'Statistics', 'Nav', 'Layout'],
+    //   },
+    // ],
   },
   overrides: [
     {
