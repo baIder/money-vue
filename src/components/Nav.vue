@@ -1,20 +1,20 @@
 <template>
     <nav>
-        <router-link to="/money" class="item">
+        <router-link to="/money" class="item" active-class="selected">
             <svg class="icon">
                 <use href="#consume"></use>
             </svg>
             记账
         </router-link>
 
-        <router-link to="/labels" class="item">
+        <router-link to="/labels" class="item" active-class="selected">
             <svg class="icon">
                 <use href="#bookmark-one"></use>
             </svg>
             标签
         </router-link>
 
-        <router-link to="/statistics" class="item">
+        <router-link to="/statistics" class="item" active-class="selected">
             <svg class="icon">
                 <use href="#analysis"></use>
             </svg>
@@ -35,7 +35,7 @@ nav {
     display: flex;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
     flex-direction: row;
-    padding: 0;
+    padding: 5px 3px 0 0;
     font-size: 12px;
 
     >.item {
@@ -51,5 +51,6 @@ nav {
             height: 32px;
         }
     }
+
 }
 </style>
