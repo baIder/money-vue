@@ -50,8 +50,6 @@ export default class EditLabel extends Vue {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  > .title {
-  }
   > .icon {
     width: 24px;
     height: 24px;
