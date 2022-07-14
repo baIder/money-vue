@@ -8,7 +8,7 @@
       <span class="right"></span>
     </div>
     <div class="notesWrapper">
-      <Notes fieldName="标签名" placeholder="请输入标签名" />
+      <Notes :value="tag.name" fieldName="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="buttonWrapper">
       <Button>删除标签</Button>
@@ -18,22 +18,24 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import tagListModel from '@/models/tagListModel';
 import Notes from '@/components/Money/Notes.vue';
 import Button from '@/components/Button.vue';
 
 @Component({
-  components: { Notes, Button },
+  components: {Notes, Button},
 })
 export default class EditLabel extends Vue {
+  tag?: { id: string; name: string } = undefined;
+
   created() {
     const id = this.$route.params.id;
     tagListModel.fetch();
     const tags = tagListModel.data;
     const tag = tags.find((t) => t.id === id);
     if (tag) {
-      console.log(tag);
+      this.tag = tag;
     } else {
       this.$router.replace('/404');
     }
@@ -50,19 +52,23 @@ export default class EditLabel extends Vue {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   > .icon {
     width: 24px;
     height: 24px;
   }
+
   > .right {
     width: 24px;
     height: 24px;
   }
 }
+
 .notesWrapper {
   background: white;
   margin-top: 8px;
 }
+
 .buttonWrapper {
   text-align: center;
   padding: 16px;

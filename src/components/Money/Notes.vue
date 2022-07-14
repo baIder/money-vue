@@ -1,18 +1,23 @@
 <template>
   <label class="notes">
     <span class="name">{{ this.fieldName }}</span>
-    <input v-model="value" type="text" :placeholder="this.placeholder" />
+    <input
+        :value="value"
+        @input="onValueChanged($event.target.value)"
+        type="text"
+        :placeholder="this.placeholder"
+    />
   </label>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Watch, Prop } from 'vue-property-decorator';
+import {Component, Watch, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Notes extends Vue {
-  @Prop({ default: '' }) value!: string;
-  @Prop({ required: true }) fieldName!: string;
+  @Prop({default: ''}) readonly value!: string;
+  @Prop({required: true}) fieldName!: string;
   @Prop() placeholder?: string;
 
   @Watch('value')
@@ -26,7 +31,6 @@ export default class Notes extends Vue {
 @import '~@/assets/style/helper.scss';
 
 .notes {
-  display: block;
   font-size: 14px;
   padding-left: 16px;
   display: flex;
