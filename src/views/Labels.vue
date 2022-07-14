@@ -72,7 +72,7 @@ export default class Labels extends Vue {
   &-wrapper {
     padding: 16px;
     text-align: center;
-    margin-top: 28px;
+    margin-top: 44px;
   }
 }
 </style>
