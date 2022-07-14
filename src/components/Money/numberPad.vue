@@ -31,8 +31,8 @@ export default class NumberPad extends Vue {
     // output = this.value.toString();
 
     mounted() {
-        console.log(`this.value: ` + this.value);
-        console.log(`this.value.toString(): ` + this.value.toString());
+        // console.log(`this.value: ` + this.value);
+        // console.log(`this.value.toString(): ` + this.value.toString());
         this.output = this.value.toString();
     }
     output = '0';
