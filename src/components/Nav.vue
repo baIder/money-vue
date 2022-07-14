@@ -1,17 +1,18 @@
 <template>
     <nav>
-        <router-link to="/money" class="item" active-class="selected">
-            <svg class="icon">
-                <use href="#consume"></use>
-            </svg>
-            记账
-        </router-link>
 
         <router-link to="/labels" class="item" active-class="selected">
             <svg class="icon">
                 <use href="#bookmark-one"></use>
             </svg>
             标签
+        </router-link>
+
+        <router-link to="/money" class="item" active-class="selected">
+            <svg class="icon">
+                <use href="#consume"></use>
+            </svg>
+            记账
         </router-link>
 
         <router-link to="/statistics" class="item" active-class="selected">
@@ -27,7 +28,7 @@
 
 export default {
     name: 'Nav'
-}
+};
 </script>
 
 <style lang="scss" scoped>

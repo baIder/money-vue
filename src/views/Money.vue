@@ -1,7 +1,7 @@
 <template>
     <Layout prefixClass="layout">
         <NumberPad />
-        <Types />
+        <Types xxx="hi" />
         <Notes />
         <Tags />
 
@@ -16,7 +16,7 @@ import Types from "@/components/Money/Types.vue";
 export default {
     name: "Money",
     components: { NumberPad, Tags, Notes, Types }
-}
+};
 </script>
 
 <style lang="scss">
