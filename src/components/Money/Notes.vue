@@ -1,21 +1,24 @@
 <template>
-    <label class="notes">
-        <span class="name">备注</span>
-        <input v-model="value" type="text" placeholder="在这里输入备注">
-    </label>
+  <label class="notes">
+    <span class="name">{{ this.fieldName }}</span>
+    <input v-model="value" type="text" :placeholder="this.placeholder" />
+  </label>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component, Watch } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Watch, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Notes extends Vue {
-    value = '';
-    @Watch('value')
-    onValueChanged(value: string) {
-        this.$emit('update:value', value);
-    }
+  value = '';
+  @Prop({ required: true }) fieldName!: string;
+  @Prop() placeholder?: string;
+
+  @Watch('value')
+  onValueChanged(value: string) {
+    this.$emit('update:value', value);
+  }
 }
 </script>
 
@@ -23,23 +26,23 @@ export default class Notes extends Vue {
 @import '~@/assets/style/helper.scss';
 
 .notes {
-    background: #f5f5f5;
-    display: block;
-    font-size: 14px;
-    padding-left: 16px;
-    display: flex;
-    align-items: center;
+  background: #f5f5f5;
+  display: block;
+  font-size: 14px;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
 
-    .name {
-        padding-right: 16px;
-    }
+  .name {
+    padding-right: 16px;
+  }
 
-    input {
-        height: 64px;
-        flex-grow: 1;
-        background: transparent;
-        border: none;
-        padding-right: 16px;
-    }
+  input {
+    height: 64px;
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding-right: 16px;
+  }
 }
 </style>
