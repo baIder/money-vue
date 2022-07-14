@@ -29,11 +29,10 @@ export default class numberPad extends Vue {
     output = '0';
 
     inputContent(event: MouseEvent) {
-        const button = (event.target as HTMLButtonElement);
+        const button = event.target as HTMLButtonElement;
         const input = button.textContent!;
         if (this.output.length === 16) { return; }
         if (this.output.indexOf('.') === this.output.length - 3 && this.output.indexOf('.') >= 0) { return; }  //只能输入两位小数
-        console.log(`this.output.indexOf('.')` + this.output.indexOf('.'));
         if (this.output === '0') {
             if ('0123456789'.indexOf(input) >= 0) {
                 this.output = input;
