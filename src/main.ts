@@ -21,6 +21,21 @@ window.createTag = (name) => {
     window.alert('标签名重复了');
   }
 };
+window.removeTag = (id) => {
+  return tagListModel.remove(id);
+};
+window.updateTag = (id, name) => {
+  return tagListModel.update(id, name);
+};
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+window.findTag = (id) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return window.tagList.find(t => t.id === id);
+};
+
+
 new Vue({
   router,
   store,
