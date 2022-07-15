@@ -5,14 +5,14 @@
         :value="value"
         @input="onValueChanged($event.target.value)"
         type="text"
-        :placeholder="this.placeholder"
+        :placeholder="placeholder"
     />
   </label>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Watch, Prop} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Notes extends Vue {
@@ -20,7 +20,6 @@ export default class Notes extends Vue {
   @Prop({required: true}) fieldName!: string;
   @Prop() placeholder?: string;
 
-  @Watch('value')
   onValueChanged(value: string) {
     this.$emit('update:value', value);
   }
