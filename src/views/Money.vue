@@ -33,7 +33,7 @@ export default class Money extends Vue {
   tags = tagList;
   recordList = recordList;
   // eslint-disable-next-line no-undef
-  record: Recorditem = {
+  record: RecordItem = {
     tags: [],
     notes: '',
     type: '-',
@@ -49,14 +49,12 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    const record2 = recordListModel.clone(this.record);
-    record2.createdAt = new Date();
-    this.recordList.push(record2);
+    recordListModel.create(this.record);
   }
 
   @Watch('recordList')
   onRecordListChanged() {
-    recordListModel.save(this.recordList);
+    recordListModel.save();
   }
 }
 </script>
