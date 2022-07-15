@@ -30,7 +30,7 @@ const tagList = tagListModel.fetch();
   components: {NumberPad, Tags, Notes, Types},
 })
 export default class Money extends Vue {
-  tags = tagList;
+  tags = window.tagList;
   recordList = recordList;
   // eslint-disable-next-line no-undef
   record: RecordItem = {

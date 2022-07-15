@@ -2,13 +2,15 @@
   <Layout>
     <div class="tags">
       <router-link
-        class="tag"
-        v-for="tag in tags"
-        :key="tag.id"
-        :to="`/labels/edit/${tag.id}`"
+          class="tag"
+          v-for="tag in tags"
+          :key="tag.id"
+          :to="`/labels/edit/${tag.id}`"
       >
         <span>{{ tag.name }}</span>
-        <svg class="icon"><use href="#right"></use></svg>
+        <svg class="icon">
+          <use href="#right"></use>
+        </svg>
       </router-link>
     </div>
     <div class="createTag-wrapper">
@@ -19,14 +21,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import tagListModel from '@/models/tagListModel';
 import Button from '@/components/Button.vue';
 
-tagListModel.fetch();
-@Component({ Button })
+@Component({Button})
 export default class Labels extends Vue {
-  tags = tagListModel.data;
+  tags = window.tagList;
+
   createTag() {
     const name = window.prompt('请输入标签名');
     if (name) {
@@ -47,6 +49,7 @@ export default class Labels extends Vue {
   font-size: 16px;
   margin: 12px;
   border-radius: 8px;
+
   > .tag {
     padding-left: 16px;
     min-height: 44px;
@@ -54,6 +57,7 @@ export default class Labels extends Vue {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #e6e6e6;
+
     > .icon {
       width: 1.5em;
       height: 1.5em;
@@ -62,6 +66,7 @@ export default class Labels extends Vue {
     }
   }
 }
+
 .createTag {
   background: #767676;
   color: white;
@@ -69,6 +74,7 @@ export default class Labels extends Vue {
   border: none;
   height: 40px;
   padding: 0 16px;
+
   &-wrapper {
     padding: 16px;
     text-align: center;
