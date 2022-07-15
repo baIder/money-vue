@@ -1,15 +1,15 @@
-declare type RecordItem = {
+type RecordItem = {
   tags: string[];
   notes: string;
   type: string;
   amount: number;
   createdAt?: Date;
 };
-declare type Tag = {
+type Tag = {
   id: string;
   name: string;
 };
-declare type TagListModel = {
+type TagListModel = {
   data: Tag[];
   fetch: () => Tag[];
   create: (name: string) => 'success' | 'duplicated'; //联合类型   字符串子类型
@@ -18,6 +18,7 @@ declare type TagListModel = {
   remove: (id: string) => boolean;
 };
 
-declare interface Window {
+interface Window {
   tagList: Tag;
+  createTag: (name: string) => void;
 }

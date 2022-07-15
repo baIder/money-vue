@@ -15,7 +15,12 @@ Vue.component('Layout', Layout);
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.tagList = tagListModel.fetch();
-
+window.createTag = (name) => {
+  const message = tagListModel.create(name);
+  if (message === 'duplicated') {
+    window.alert('标签名重复了');
+  }
+};
 new Vue({
   router,
   store,
