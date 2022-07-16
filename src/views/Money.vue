@@ -20,14 +20,10 @@ import Tags from '@/components/Money/Tags.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Types from '@/components/Money/Types.vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store/index2';
 
 
-@Component({
-  components: {NumberPad, Tags, Notes, Types},
-})
+@Component({components: {NumberPad, Tags, Notes, Types}})
 export default class Money extends Vue {
-  recordList = store.recordList;
   // eslint-disable-next-line no-undef
   record: RecordItem = {
     tags: [],
@@ -36,13 +32,20 @@ export default class Money extends Vue {
     amount: 0,
   };
 
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+
+  created() {
+    this.$store.commit('fetchRecords');
+  }
 
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
 
   saveRecord() {
-    store.createRecord(this.record);
+    this.$store.commit('createRecord', this.record);
   }
 
 }
