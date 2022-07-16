@@ -18,13 +18,12 @@ import Vue from 'vue';
 import NumberPad from '@/components/Money/numberPad.vue';
 import Tags from '@/components/Money/Tags.vue';
 import Notes from '@/components/Money/Notes.vue';
-import Types from '@/components/Money/Types.vue';
 import {Component} from 'vue-property-decorator';
 import Tabs from '@/components/Tabs.vue';
 import recordTypeList from '@/constants/recordTypeList';
 
 
-@Component({components: {Tabs, NumberPad, Tags, Notes, Types}})
+@Component({components: {Tabs, NumberPad, Tags, Notes}})
 export default class Money extends Vue {
   // eslint-disable-next-line no-undef
   record: RecordItem = {
