@@ -10,7 +10,6 @@
       />
     </div>
     <Tags @update:value="onSelectTag"/>
-    {{ record }}
   </Layout>
 </template>
 
