@@ -3,10 +3,10 @@
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
     <ol>
       <li v-for="(group,index) in groupedList" :key="index">
-        <h4 class="title">
+        <h3 class="title">
           {{ beautify(group.title) }}
-          <span>{{ group.total }}</span>
-        </h4>
+          <span>￥{{ group.total }}</span>
+        </h3>
         <ol>
           <li class="record" v-for="item in group.items" :key="item.id">
             <span>{{ tagString(item.tags) }}</span>
