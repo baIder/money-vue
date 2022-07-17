@@ -102,11 +102,11 @@ export default class Statistics extends Vue {
 
   > .noResult {
     display: inline-block;
-    margin: 0 16px;
-    padding-top: 16px;
+    padding-top: 32px;
     text-align: center;
-    color: #767676;
-    border-bottom: 1px solid black;
+    $color-noResult: #bbbbbb;
+    color: $color-noResult;
+    border-bottom: 1px solid $color-noResult;
   }
 }
 
