@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-    <ol>
+    <ol v-if="groupedList.length>0">
       <li v-for="(group,index) in groupedList" :key="index">
         <h3 class="title">
           {{ beautify(group.title) }}
@@ -17,6 +17,11 @@
 
       </li>
     </ol>
+    <div v-else class="noResultWrapper">
+      <router-link to="/money" class="noResult">
+        快来记第一笔账叭！
+      </router-link>
+    </div>
   </Layout>
 </template>
 
@@ -91,7 +96,19 @@ export default class Statistics extends Vue {
 </script>
 
 <style scoped lang="scss">
+.noResultWrapper {
+  display: flex;
+  justify-content: center;
 
+  > .noResult {
+    display: inline-block;
+    margin: 0 16px;
+    padding-top: 16px;
+    text-align: center;
+    color: #767676;
+    border-bottom: 1px solid black;
+  }
+}
 
 ::v-deep {
   .type-tabs-item {
