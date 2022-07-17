@@ -53,8 +53,8 @@ export default class Tabs extends Vue {
     &.selected::after {
       content: '';
       position: absolute;
-      bottom: 0px;
-      left: 0px;
+      bottom: 0;
+      left: 0;
       width: 100%;
       height: 4px;
       background: $color-font;
