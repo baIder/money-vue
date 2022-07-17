@@ -22,19 +22,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class NumberPad extends Vue {
   @Prop() readonly value!: number;
 
-  // output = this.value.toString();
-
   mounted() {
-    // console.log(`this.value: ` + this.value);
-    // console.log(`this.value.toString(): ` + this.value.toString());
     this.output = this.value.toString();
   }
+
   output = '0';
 
   inputContent(event: MouseEvent) {
@@ -44,8 +41,8 @@ export default class NumberPad extends Vue {
       return;
     }
     if (
-      this.output.indexOf('.') === this.output.length - 3 &&
-      this.output.indexOf('.') >= 0
+        this.output.indexOf('.') === this.output.length - 3 &&
+        this.output.indexOf('.') >= 0
     ) {
       return;
     } //只能输入两位小数
@@ -62,6 +59,7 @@ export default class NumberPad extends Vue {
     }
     this.output += input;
   }
+
   remove() {
     if (this.output.length === 1) {
       this.output = '0';
@@ -69,9 +67,11 @@ export default class NumberPad extends Vue {
       this.output = this.output.slice(0, -1);
     }
   }
+
   clear() {
     this.output = '0';
   }
+
   ok() {
     this.$emit('update:value', parseFloat(this.output));
     this.$emit('submit', this.output);
