@@ -34,11 +34,7 @@ import clone from '@/lib/clone';
 export default class Statistics extends Vue {
   // eslint-disable-next-line no-undef
   tagString(tags: Tag[]) {
-    const tagNames = [];
-    for (let i = 0; i < tags.length; i++) {
-      tagNames.push(tags[i].name);
-    }
-    return tagNames.length === 0 ? '无' : tagNames.join('，');
+    return tags.length === 0 ? '无' : tags.map(t => t.name).join('，');
   }
 
   get recordList() {
