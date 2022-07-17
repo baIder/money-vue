@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -17,4 +17,10 @@ body {
   font-size: 16px;
   background: $color-background;
 }
+
+#app {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 </style>
