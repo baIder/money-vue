@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-    <Chart :options="x"/>
+    <div class="chartWrapper" ref="chartWrapper">
+      <Chart class="chart" :options="chartOptions"/>
+    </div>
     <ol v-if="groupedList.length>0">
       <li v-for="(group,index) in groupedList" :key="index">
         <h3 class="title">
@@ -34,6 +36,9 @@ import recordTypeList from '@/constants/recordTypeList';
 import dayjs from 'dayjs';
 import clone from '@/lib/clone';
 import Chart from '@/components/Chart.vue';
+import * as echarts from 'echarts';
+
+type EChartsOption = echarts.EChartsOption;
 
 @Component({
   components: {Tabs, Chart}
@@ -49,27 +54,67 @@ export default class Statistics extends Vue {
     return (this.$store.state as RootState).recordList;
   }
 
-  get x() {
-    return {
+  get chartOptions() {
+    const chartOptions: EChartsOption = {
+      grid: {
+        left: 0,
+        right: 0,
+      },
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLine: {
+          lineStyle: {
+            color: 'red'
+          }
+        },
+        data: [
+          '1', 'Tue', 'Wed', 'Thu', 'Fri',
+          'Sat', 'Mon', 'Tue', 'Wed', 'Thu',
+          'Fri', 'Sat', 'Mon', 'Tue', 'Wed',
+          'Thu', 'Fri', 'Sat', 'Mon', 'Tue',
+          'Wed', 'Thu', 'Fri', 'Sat', 'Mon',
+          'Tue', 'Wed', 'Thu', 'Fri', '30',
+        ]
       },
       yAxis: {
+        show: false,
         type: 'value'
       },
       tooltip: {
-        show: true
+        show: true,
+        triggerOn: 'click',
+        formatter: '￥{c}',
+        position: 'top',
+        extraCssText: 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);',
       },
       series: [
         {
-          data: [150, 230, 224, 218, 135, 147, 260],
+          symbolSize: 15,
+          symbol: 'image://https://img.bald3r.wang/img/钱.svg',
+          itemStyle: {
+            borderWidth: 1,
+            color: 'red'
+          },
+          data: [150, 230, 224, 218, 135,
+            147, 150, 230, 224, 218, 135,
+            147, 150, 230, 224, 218, 135,
+            147, 150, 230, 224, 218, 135,
+            147, 150, 230, 224, 218, 135,
+            147
+          ],
           type: 'line'
         }
       ]
-
-
     };
+    return chartOptions;
+  }
+
+  mounted() {
+    const div = this.$refs.chartWrapper as HTMLDivElement
+    div.scrollLeft = div.scrollWidth;
   }
 
   get groupedList() {
@@ -119,6 +164,15 @@ export default class Statistics extends Vue {
 </script>
 
 <style scoped lang="scss">
+.chartWrapper {
+  overflow: auto;
+
+  > .chart {
+    width: 400%;
+  }
+
+}
+
 .noResultWrapper {
   display: flex;
   justify-content: center;
