@@ -37,6 +37,7 @@ import dayjs from 'dayjs';
 import clone from '@/lib/clone';
 import Chart from '@/components/Chart.vue';
 import * as echarts from 'echarts';
+import _ from 'lodash';
 
 type EChartsOption = echarts.EChartsOption;
 
@@ -54,7 +55,20 @@ export default class Statistics extends Vue {
     return (this.$store.state as RootState).recordList;
   }
 
+  get chartArray() {
+    const today = new Date();
+    const array = [];
+    for (let i = 29; i >= 0; i--) {
+      const dateString = dayjs(today).subtract(i, 'day');
+      const found = _.find(this.recordList, {createdAt: dateString.format('YYYY-MM-DD')});
+      array.push({date: dateString.format('M-D'), value: found ? found.amount : 0});
+    }
+    return array
+  }
+
   get chartOptions() {
+    const keys = this.chartArray.map(i => i.date);
+    const values = this.chartArray.map(i => i.value);
     const chartOptions: EChartsOption = {
       grid: {
         left: 0,
@@ -70,14 +84,7 @@ export default class Statistics extends Vue {
             color: 'red'
           }
         },
-        data: [
-          '1', 'Tue', 'Wed', 'Thu', 'Fri',
-          'Sat', 'Mon', 'Tue', 'Wed', 'Thu',
-          'Fri', 'Sat', 'Mon', 'Tue', 'Wed',
-          'Thu', 'Fri', 'Sat', 'Mon', 'Tue',
-          'Wed', 'Thu', 'Fri', 'Sat', 'Mon',
-          'Tue', 'Wed', 'Thu', 'Fri', '30',
-        ]
+        data: keys
       },
       yAxis: {
         show: false,
@@ -98,13 +105,7 @@ export default class Statistics extends Vue {
             borderWidth: 1,
             color: 'red'
           },
-          data: [150, 230, 224, 218, 135,
-            147, 150, 230, 224, 218, 135,
-            147, 150, 230, 224, 218, 135,
-            147, 150, 230, 224, 218, 135,
-            147, 150, 230, 224, 218, 135,
-            147
-          ],
+          data: values,
           type: 'line'
         }
       ]
@@ -113,7 +114,7 @@ export default class Statistics extends Vue {
   }
 
   mounted() {
-    const div = this.$refs.chartWrapper as HTMLDivElement
+    const div = this.$refs.chartWrapper as HTMLDivElement;
     div.scrollLeft = div.scrollWidth;
   }
 
