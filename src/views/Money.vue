@@ -7,6 +7,7 @@
           fieldName="日期"
           placeholder="在这里输入日期"
           :value.sync="record.createdAt"
+          type="date"
       />
     </div>
     <div class="notesWrapper">
