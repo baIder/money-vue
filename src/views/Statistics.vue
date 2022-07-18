@@ -61,13 +61,13 @@ export default class Statistics extends Vue {
     for (let i = 29; i >= 0; i--) {
       const dateString = dayjs(today).subtract(i, 'day');
       const found = _.find(this.recordList, {createdAt: dateString.format('YYYY-MM-DD')});
-      array.push({date: dateString.format('M-D'), value: found ? found.amount : 0});
+      array.push({key: dateString.format('M-D'), value: found ? found.amount : 0});
     }
-    return array
+    return array;
   }
 
   get chartOptions() {
-    const keys = this.chartArray.map(i => i.date);
+    const keys = this.chartArray.map(i => i.key);
     const values = this.chartArray.map(i => i.value);
     const chartOptions: EChartsOption = {
       grid: {
