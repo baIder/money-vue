@@ -8,7 +8,7 @@
       <span class="right"></span>
     </div>
     <div class="notesWrapper">
-      <Notes :value="currentTag.name" @update:value="update" fieldName="标签名" placeholder="请输入标签名"/>
+      <FormItem :value="currentTag.name" @update:value="update" fieldName="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="buttonWrapper">
       <Button @click.native="remove">删除标签</Button>
@@ -19,10 +19,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import FormItem from '@/components/Money/FormItem.vue';
+import FormItem from '@/components/FormItem.vue';
 import Button from '@/components/Button.vue';
 
-@Component({components: {Notes: FormItem, Button}})
+@Component({components: {FormItem, Button}})
 export default class EditLabel extends Vue {
   get currentTag() {
     return this.$store.state.currentTag;

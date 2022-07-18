@@ -3,14 +3,14 @@
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
     <div class="createAt">
-      <Notes
+      <FormItem
           fieldName="日期"
           placeholder="在这里输入日期"
           :value.sync="record.createdAt"
       />
     </div>
     <div class="notesWrapper">
-      <Notes
+      <FormItem
           fieldName="备注"
           placeholder="在这里输入备注"
           :value.sync="record.notes"
@@ -24,13 +24,13 @@
 import Vue from 'vue';
 import NumberPad from '@/components/Money/numberPad.vue';
 import Tags from '@/components/Money/Tags.vue';
-import FormItem from '@/components/Money/FormItem.vue';
+import FormItem from '@/components/FormItem.vue';
 import {Component} from 'vue-property-decorator';
 import Tabs from '@/components/Tabs.vue';
 import recordTypeList from '@/constants/recordTypeList';
 
 
-@Component({components: {Tabs, NumberPad, Tags, Notes: FormItem}})
+@Component({components: {Tabs, NumberPad, Tags, FormItem}})
 export default class Money extends Vue {
   // eslint-disable-next-line no-undef
   record: RecordItem = {
