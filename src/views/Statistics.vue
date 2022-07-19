@@ -68,7 +68,6 @@ export default class Statistics extends Vue {
       } else {
         array.push({key: dateString.format('M-D'), value: 0});
       }
-
     }
     return array;
   }
