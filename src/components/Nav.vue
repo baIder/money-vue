@@ -1,6 +1,5 @@
 <template>
   <nav>
-
     <router-link to="/labels" class="item" active-class="selected">
       <svg class="icon">
         <use href="#bookmark-one"></use>

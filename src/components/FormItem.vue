@@ -3,7 +3,7 @@
     <span class="name">{{ this.fieldName }}</span>
     <template v-if="type ===  'date'">
       <input
-          :value="x(value)"
+          :value="formatDate(value)"
           @input="onValueChanged($event.target.value)"
           :type="type"
           :placeholder="placeholder"
@@ -37,7 +37,7 @@ export default class FormItem extends Vue {
     this.$emit('update:value', value);
   }
 
-  x(isoString: string) {
+  formatDate(isoString: string) {
     return dayjs(isoString).format('YYYY-MM-DD');
   }
 }

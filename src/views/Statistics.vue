@@ -172,6 +172,8 @@ export default class Statistics extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "~@/assets/style/helper.scss";
+
 .chartWrapper {
   overflow: auto;
 
@@ -189,7 +191,6 @@ export default class Statistics extends Vue {
     display: inline-block;
     padding-top: 32px;
     text-align: center;
-    $color-noResult: #bbbbbb;
     color: $color-noResult;
     border-bottom: 1px solid $color-noResult;
   }
