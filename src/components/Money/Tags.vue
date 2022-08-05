@@ -50,7 +50,7 @@ export default class Tags extends mixins(tagHelper) {
 @import '~@/assets/style/helper.scss';
 
 .tags {
-  background: white;
+  background: linear-gradient(315deg, rgba(234, 242, 213, 1) 0%, rgba(192, 215, 129, 1) 100%);
   font-size: 14px;
   padding: 16px;
   margin: 8px;
@@ -64,19 +64,22 @@ export default class Tags extends mixins(tagHelper) {
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
+    padding: 2px;
 
     > li {
-      $bg: #d9d9d9;
-      background: $bg;
+      //$bg: #d9d9d9;
+      background: $tabs-bg;
       height: 24px;
       line-height: 24px;
       border-radius: 12px;
       padding: 0 20px;
-      margin-right: 12px;
-      margin-top: 4px;
+      //margin-right: 12px;
+      //margin-top: 4px;
+      margin: 4px 12px 4px 0px;
+      box-shadow: 0 0 2px grey;
 
       &.selected {
-        background: darken($bg, 30%);
+        background: lighten($color-highlight, 20%);
         color: white;
       }
     }
@@ -89,7 +92,7 @@ export default class Tags extends mixins(tagHelper) {
       background: transparent;
       border: none;
       border-bottom: 1px solid;
-      color: #999999;
+      color: $color-font;
       padding: 0 4px;
     }
   }

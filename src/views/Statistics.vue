@@ -88,7 +88,7 @@ export default class Statistics extends Vue {
         },
         axisLine: {
           lineStyle: {
-            color: '#5470C6'
+            color: '#91b822'
           }
         },
         data: keys
@@ -110,7 +110,7 @@ export default class Statistics extends Vue {
           // symbol: 'image://https://img.bald3r.wang/img/钱.svg',
           itemStyle: {
             borderWidth: 1,
-            color: '#5470C6'
+            color: '#91b822'
           },
           data: values,
           type: 'line'
@@ -207,7 +207,7 @@ export default class Statistics extends Vue {
   }
 
   .type-tabs-item {
-    background: #c4c4c4;
+    background: $tabs-bg;
 
     &.selected {
       background: white;

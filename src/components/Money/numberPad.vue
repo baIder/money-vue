@@ -106,7 +106,7 @@ export default class NumberPad extends Vue {
 
       &:active {
         transform: scale(0.95);
-        background: lighten(#6ca280, 20%) !important;
+        background: lighten($color-highlight, 20%) !important;
       }
 
       width: calc(25% - 4px);
@@ -131,7 +131,7 @@ export default class NumberPad extends Vue {
       }
 
       &:nth-child(1) {
-        background: $color-button-bg;
+        background: darken($color-button-bg, 1%);
       }
 
       &:nth-child(2),

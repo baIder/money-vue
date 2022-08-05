@@ -36,10 +36,11 @@ export default class Tabs extends Vue {
 @import '~@/assets/style/helper.scss';
 
 .tabs {
-  background: #c4c4c4;
+  background: $tabs-bg;
   display: flex;
   text-align: center;
   font-size: 24px;
+  box-shadow: 0 0 4px $color-shadow;
 
   &-item {
     width: 50%;
@@ -57,7 +58,7 @@ export default class Tabs extends Vue {
       left: 0;
       width: 100%;
       height: 4px;
-      background: $color-font;
+      background: $color-highlight;
     }
   }
 }
