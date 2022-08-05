@@ -179,6 +179,7 @@ export default class Statistics extends Vue {
   overflow-x: auto;
   overflow-y: hidden;
   height: 200px;
+  z-index: 10;
 
   > .chart {
     width: 400%;
@@ -199,15 +200,21 @@ export default class Statistics extends Vue {
   }
 }
 
+
 ::v-deep {
+  .type-tabs {
+    z-index: 1;
+  }
+
   .type-tabs-item {
     background: #c4c4c4;
 
     &.selected {
       background: white;
+      z-index: 10;
 
       &::after {
-        display: none;
+        top: 0;
       }
     }
   }
@@ -247,5 +254,6 @@ li ol {
   margin-left: 16px;
   color: #999999;
 }
+
 
 </style>

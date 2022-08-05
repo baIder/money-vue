@@ -53,9 +53,12 @@ export default class Tags extends mixins(tagHelper) {
   background: white;
   font-size: 14px;
   padding: 16px;
+  margin: 8px;
+  border-radius: 4px;
   flex-grow: 1;
   display: flex;
   flex-direction: column-reverse;
+  box-shadow: 0 0 3px $color-shadow;
 
   > .current {
     display: flex;
