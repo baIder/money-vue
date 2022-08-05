@@ -17,7 +17,9 @@ export default class Chart extends Vue {
   onOptionsChanged(newValue: EChartsOption) {
     //第一次加载图表的时候还未挂载，因此echarts.init(this.$refs.wrapper as HTMLDivElement)为undefined，通过setTimeout来进行第一次渲染
     setTimeout(() => {
-      echarts.init(this.$refs.wrapper as HTMLDivElement).setOption(newValue);
+      let charts = echarts.init(this.$refs.wrapper as HTMLDivElement);
+      charts.setOption(newValue);
+      charts.resize();
     }, 0);
   }
 }

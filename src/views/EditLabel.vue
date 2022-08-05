@@ -85,5 +85,9 @@ export default class EditLabel extends Vue {
   text-align: center;
   padding: 16px;
   margin-top: 44px;
+
+  > Button {
+    background: #d7000f;
+  }
 }
 </style>

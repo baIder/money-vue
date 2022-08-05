@@ -76,6 +76,7 @@ export default class Statistics extends Vue {
     const keys = this.chartArray.map(i => i.key);
     const values = this.chartArray.map(i => i.value);
     const chartOptions: EChartsOption = {
+      height: 100,
       grid: {
         left: 0,
         right: 0,
@@ -87,7 +88,7 @@ export default class Statistics extends Vue {
         },
         axisLine: {
           lineStyle: {
-            color: 'red'
+            color: '#5470C6'
           }
         },
         data: keys
@@ -105,11 +106,11 @@ export default class Statistics extends Vue {
       },
       series: [
         {
-          symbolSize: 15,
-          symbol: 'image://https://img.bald3r.wang/img/钱.svg',
+          symbolSize: 8,
+          // symbol: 'image://https://img.bald3r.wang/img/钱.svg',
           itemStyle: {
             borderWidth: 1,
-            color: 'red'
+            color: '#5470C6'
           },
           data: values,
           type: 'line'
@@ -173,8 +174,11 @@ export default class Statistics extends Vue {
 <style scoped lang="scss">
 @import "~@/assets/style/helper.scss";
 
+
 .chartWrapper {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 200px;
 
   > .chart {
     width: 400%;
@@ -222,12 +226,20 @@ export default class Statistics extends Vue {
   @extend %item;
 }
 
+li ol {
+  margin: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px grey;
+  background: white;
+}
 
 .record {
   @extend %item;
-  background: white;
   border-bottom: 1px solid #e6e6e6;
-  border-radius: 8px;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .notes {
